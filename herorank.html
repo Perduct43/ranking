@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .big-div {
+        border: 1.5px solid black;
+        border-radius: 5px;
+        width: 650px;
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    select {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 2px grey;
+    }
+
+    button:hover {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 5px 5px #ffffff1e;
+    }
+</style>
+
+<body>
+    <div class="big-div">
+        <h1>Hero Rank!</h1>
+        <h2>Hero:</h2>
+        <input type="text" name="" id="heroIt">
+        <h2>Power:</h2>
+        <span id="powervalue"></span>
+        <input oninput="" type="range" name="" id="powerIt">
+        <h2>Rank:</h2>
+        <select name="" id="rankIt">
+            <option value="S tier (Mythical)">Mythical</option>
+            <option value="A tier (Legend)">Legend</option>
+            <option value="B tier (Elite)">Elite</option>
+            <option value="D tier (Pro)">Pro</option>
+            <option value="F tier (Rookie)">Rookie</option>
+        </select>
+        <button onclick="result()">Submit</button>
+        <div id="res"></div>
+    </div>
+</body>
+<script>
+
+    function result() {
+        const hero = document.getElementById("heroIt").value;
+        const power = document.getElementById("powerIt").value;
+        const rank = document.getElementById("rankIt").value;
+
+        const hpr = { heroname: hero, heropower: power, herorank: rank }
+
+        const display = document.getElementById("res")
+        display.innerHTML =
+            `
+            <div style="border:1px solid black; margin-top: 20px; padding: 20px; border-radius: 5px;">
+              <h2>Hero Name:${hpr.heropower}<span id="herospan"></span></h1> 
+              <h2>Power:${hpr.heropower}<span id="heropower"></span></h2>
+              <h2>Rank:${hpr.herorank}<span id="herorank"></span></h2>
+            </div>
+        `
+    }
+
+</script>
+
+</html>
