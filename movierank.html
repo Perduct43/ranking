@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+    }
+
+    .big-div {
+        border: 1.5px solid black;
+        border-radius: 5px;
+        width: 650px;
+        padding: 20px;
+    }
+
+    input {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    select {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 2px grey;
+    }
+
+    button:hover {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 5px 5px #ffffff1e;
+    }
+</style>
+
+<body>
+    <div class="big-div">
+        <h1>Movie rank</h1>
+        <h2>Movie name:</h2>
+        <input type="text" name="" id="moviename">
+        <h2>Review:</h2>
+        <span></span>
+        <input type="text" name="" id="review">
+        <h2>Rank:</h2>
+        <select name="" id="rank">
+            <option value="1 star (🌟)">🌟</option>
+            <option value="2 star (🌟🌟)">🌟🌟</option>
+            <option value="3 star (🌟🌟🌟)">🌟🌟🌟</option>
+            <option value="4 star (🌟🌟🌟🌟)">🌟🌟🌟🌟</option>
+            <option value="5 star (🌟🌟🌟🌟🌟)">🌟🌟🌟🌟🌟</option>
+        </select>
+        <button onclick="result()">Submit</button>
+        <div id="res"></div>
+    </div>
+</body>
+<script>
+const movieReviews = []
+
+function result() {
+    const name = document.getElementById("moviename").value;
+    const revieww = document.getElementById("review").value;
+    const rank = document.getElementById("rank").value;
+
+    const nrr = { 
+        movie: name, 
+        review: revieww, 
+        rankk: rank,
+        id: Date.now()
+    }
+
+    movieReviews.push(nrr)
+
+    display()
+}
+
+function display() {
+
+    const display = document.getElementById("res")
+
+    display.innerHTML = movieReviews.map((item, index) => (`
+        <div style="border:1px solid black; margin-top:20px; padding:20px; border-radius:5px;">
+            <h2>Movie: ${item.movie}</h2>
+            <h2>Review: ${item.review}</h2>
+            <h2>Rank: ${item.rankk}</h2>
+            <button onclick="deleteReview(${index})">Delete</button>
+        </div>
+    `)).join("")
+}
+
+function deleteReview(index) {
+
+    movieReviews.splice(index, 1)
+
+    display()
+}
+</script>
+
+</html
